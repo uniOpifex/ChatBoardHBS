@@ -11,17 +11,9 @@ var mongoose = require('mongoose')
 var index = require('./routes/index');
 var users = require('./routes/users');
 
-
-
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-
 // Database Set-up
 mongoose.Promise = global.Promise
-mongoose.connect(process.env.MONGODB_URI,{useMongoClient: true});
+mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true});
 
 const db = mongoose.connection
 db.on('error', (error) => {
@@ -30,6 +22,14 @@ db.on('error', (error) => {
 db.once('open', () => {
   console.log('Connected to MongoDB!')
 })
+
+var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
