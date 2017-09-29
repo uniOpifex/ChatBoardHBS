@@ -47,6 +47,9 @@ app.use('/users', users);
 var boardController = require('./routes/boardController');
 app.use('/boards', boardController);
 
+const postController = require('./routes/postController')
+app.use('/boards/:boardId/posts', postController)
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

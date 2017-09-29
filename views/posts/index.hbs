@@ -1,0 +1,16 @@
+<div>
+    <h1>{{board.name}}'s posts</h1>
+
+   
+    <div>
+        <a href="/boards">Back to Boards</a>
+    </div>
+    
+    {{#each board.posts}}
+        <div>
+            {{this.content}}
+        </div>
+    {{/each}}
+
+    
+</div>
