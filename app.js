@@ -8,6 +8,39 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose')
 const methodOverride = require('method-override')
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+io.on('connection', function(){ /* … */ });
+
+io.on('connection', function (socket) {
+  console.log('a user connected');
+  socket.on('disconnect', function () {
+      console.log('user disconnected');
+  });
+  socket.on('chat', function (msg) {
+    socket.broadcast.emit('chat', msg);
+  });
+  mongo.connect(process.env.CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
+    var collection = db.collection('chat messages')
+    var stream = collection.find().sort({ _id : -1 }).limit(10).stream();
+    stream.on('data', function (chat) { socket.emit('chat', chat); });
+  });
+  socket.on('disconnect', function () {
+    console.log('user disconnected');
+});
+
+socket.on('chat', function (msg) {
+    mongo.connect(process.env.CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
+        var collection = db.collection('chat messages');
+        collection.insert({ content: msg }, function (err, o) {
+            if (err) { console.warn(err.message); }
+            else { console.log("chat message inserted into db: " + msg); }
+        });
+    });
+
+    socket.broadcast.emit('chat', msg);
+});
+})
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -25,11 +58,24 @@ db.once('open', () => {
 })
 
 var app = express();
+app.use(methodOverride('_method'))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+
+// var serve = app;
+// app.listen(app.get('port'), function() {
+//     console.log('Express server listening on port ' + app.get('port'));
+// });
+
+// io.on('connection', function (socket) {
+//   console.log('a user connected');
+//   socket.on('disconnect', function () {
+//       console.log('user disconnected');
+//   });
+// });
 
 
 // uncomment after placing your favicon in /public
@@ -45,7 +91,7 @@ app.use('/users', users);
 
 
 // Register Controllers
-var boardController = require('./routes/boardController');
+const boardController = require('./routes/boardController');
 app.use('/boards', boardController);
 
 const postController = require('./routes/postController')
