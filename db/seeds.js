@@ -28,14 +28,14 @@ var PostModel = Schema.PostModel;
 
 // Create some boards and Posts
 const channel = new BoardModel({ name: 'Channel', description: "This is the main board channel" })
+const admin = new BoardModel({ name: 'Admin', description: "This is the Admin board" })
 
-
-const post1 = new PostModel({ content: 'Little Post' })
-const post2 = new PostModel({ content: 'Big Post' })
-const post3 = new PostModel({ content: 'Blue Post' })
+const post1 = new PostModel({ content: 'short Post' })
+const post2 = new PostModel({ content: 'regular Post' })
+const post3 = new PostModel({ content: 'angry Post' })
 
 // Here we assign some Posts to each board.
-const boards = [channel]
+const boards = [channel,admin]
 const posts = [post1, post2, post3]
 
 boards.forEach((board) => {

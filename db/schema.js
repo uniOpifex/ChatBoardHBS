@@ -2,6 +2,16 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
 
+
+
+
+const PostSchema = new Schema({
+    content: {
+        type: String
+    }
+
+})
+
 const BoardSchema = new Schema({
     name: {
         type: String,
@@ -10,23 +20,13 @@ const BoardSchema = new Schema({
     },
     description: {
         type: String
-    }
-})
-
-
-const PostSchema = new Schema({
-    content: {
-        type: String,
     },
-    date: {
-        type: String
-    }
-
+    posts: [PostSchema]
 })
 
 
 
-const BoardModel = mongoose.model('Company', BoardSchema)
+const BoardModel = mongoose.model('Board', BoardSchema)
 const PostModel = mongoose.model('Post', PostSchema)
 
 
