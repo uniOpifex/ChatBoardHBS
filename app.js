@@ -20,7 +20,7 @@ io.on('connection', function (socket) {
   socket.on('chat', function (msg) {
     socket.broadcast.emit('chat', msg);
   });
-  mongo.connect(process.env.CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
+  mongo.connect(process.env.process.env.MONGODB_URI, function (err, db) {
     var collection = db.collection('chat messages')
     var stream = collection.find().sort({ _id : -1 }).limit(10).stream();
     stream.on('data', function (chat) { socket.emit('chat', chat); });
@@ -30,7 +30,7 @@ io.on('connection', function (socket) {
 });
 
 socket.on('chat', function (msg) {
-    mongo.connect(process.env.CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
+    mongo.connect(process.env.process.env.MONGODB_URI, function (err, db) {
         var collection = db.collection('chat messages');
         collection.insert({ content: msg }, function (err, o) {
             if (err) { console.warn(err.message); }
