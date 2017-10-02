@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router({ mergeParams: true })
 
+
 const Schema = require("../db/schema.js");
 const BoardModel = Schema.BoardModel;
 
@@ -9,7 +10,6 @@ router.get('/', (request, response) => {
 
     // GRAB the board ID from the parameters
     const boardId = request.params.boardId
-
     // Use the BoardModel to find the board by ID
     BoardModel.findById(boardId)
         .then((board) => {
@@ -18,6 +18,9 @@ router.get('/', (request, response) => {
             // using Handlebars
             response.render('posts/index', {
                 board: board
+            })
+            request.send('posts/new', {
+                boardId: boardId
             })
         })
         .catch((error) => {
@@ -56,7 +59,6 @@ router.post('/', (request, response) => {
             // PUSH the new snowboard object into the board's 
             // snowboard array            
             board.posts.push(newPost)
-            console.log(newPost)
 
             // SAVE the board and return the PROMISE
             return board.save()

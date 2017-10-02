@@ -2,15 +2,19 @@
     <h1>The General Channel</h1>
 
     <h3>Boards:</h3>
-    {{!-- <div>
-        <a href="/companies/new">Add New Company</a>
-    </div>  --}}
+    <div>
+        <a href="/board/new">Add New Board</a>
+    </div> 
     {{#each boards}}
         <div>
             {{this.name}} - {{this.description}}
             <a href="/boards/{{this._id}}/posts">{{this.name}}'s posts</a>
         </div>
     {{/each}}
+
+     <div>
+        <a href="/boards/new">Add New Board</a>
+    </div>
 </div>
 
 

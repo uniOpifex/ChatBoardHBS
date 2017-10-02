@@ -8,12 +8,22 @@
     
     {{#each board.posts}}
         <div>
-            {{this.content}}
+            {{this.content}} -- {{ this.date}}
         </div>
     {{/each}}
 
      <div>
         <a href="/boards/{{board._id}}/posts/new">Create a New Post</a>
     </div>
+</form>
     
+</div>
+
+<div>
+    <div>
+        <a href="/boards/{{board_id}}/edit">Edit</a>
+    </div>
+    <div>
+        <a href="/boards/{{board._id}}/delete">Delete</a>
+    </div>
 </div>
