@@ -9,10 +9,11 @@
     
     {{#each board.posts}}
         <div>
-            {{this.content}} -- {{this.user}} -- {{ this.date}} <button
+            {{this.content}} -- {{this.user}} -- {{ this.date}} 
+            {{!-- <button
             action="/board/{{board._id}}/posts/{{post._id}}?_method=PUT" method="POST" >
             <input type="submit" value="Hide"></button>
-        </div>
+        </div> --}}
     {{/each}}
 
      <div>

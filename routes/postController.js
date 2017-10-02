@@ -34,6 +34,7 @@ router.get('/new', (request, response) => {
 
     // GRAB the board ID from the parameters
     const boardId = request.params.boardId
+    console.log(request.params)
 
     // RENDER a new form for a fresh Snowboard,
     // also passing the boardId to use in the
@@ -48,13 +49,26 @@ router.post('/', (request, response) => {
 
     // GRAB the board ID from the parameters
     const boardId = request.params.boardId
-
+    // const userId = request.params.userId
     // GRAB the new snowboard info from the request body
     const newPost = request.body
-
+    
+        // Use the CompanyModel to find the company by ID in the database
+    
     // USE the BoardModel to find the board by ID
     BoardModel.findById(boardId)
         .then((board) => {
+            UserModel.findById(userId)
+                .then((user) => {
+                    // THEN once the user comes back from the database,
+                    // render the single company's info using Handlebars
+                    response.render('users/show', {
+                        user: user
+                    })
+                 })
+                .catch((error) => {
+                    console.log(error)
+                    })
             // THEN once you have found the board from the database
             // PUSH the new snowboard object into the board's 
             // snowboard array            
