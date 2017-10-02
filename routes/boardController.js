@@ -95,7 +95,7 @@ router.put('/:boardId', (request, response) => {
 router.get('/:boardId', (request, response) => {
 
     // GRAB the company ID from the parameters
-    const boardId = request.params.companyId
+    const boardId = request.params.boardId
 
     // Use the CompanyModel to find the company by ID in the database
     BoardModel.findById(boardId)

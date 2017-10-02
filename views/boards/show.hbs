@@ -3,7 +3,10 @@
     <div>Description: {{board.description}}</div>
     <div>Date-created: {{board.date}}</div>
     <div>
-        <a href="/boards">Back to Companies</a>
+        Number of Posts {{board.posts.length}}
+    </div>
+    <div>
+        <a href="/boards/{{board._id}}/posts">Back to posts</a>
     </div>
     <div>
         <a href="/boards{{board._id}}/edit">Edit</a>
@@ -11,4 +14,5 @@
     <div>
         <a href="/boards/{{board._id}}/delete">Delete</a>
     </div>
+
 </div>

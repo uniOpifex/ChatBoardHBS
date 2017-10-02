@@ -1,6 +1,7 @@
 <div>
     <h1>{{board.name}}'s posts</h1>
-
+    <h2>{{board.description}}</h2>
+    <a href="/boards/{{board._id}}">{{board.name}} Info</a>
    
     <div>
         <a href="/boards">Back to Boards</a>
@@ -17,13 +18,4 @@
     </div>
 </form>
     
-</div>
-
-<div>
-    <div>
-        <a href="/boards/{{board_id}}/edit">Edit</a>
-    </div>
-    <div>
-        <a href="/boards/{{board._id}}/delete">Delete</a>
-    </div>
 </div>
