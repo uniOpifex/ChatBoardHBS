@@ -56,6 +56,7 @@ router.post('/', (request, response) => {
             // PUSH the new snowboard object into the board's 
             // snowboard array            
             board.posts.push(newPost)
+            console.log(newPost)
 
             // SAVE the board and return the PROMISE
             return board.save()
