@@ -12,7 +12,6 @@ const methodOverride = require('method-override')
 
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 
 // Database Set-up
 mongoose.Promise = global.Promise
@@ -43,7 +42,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
 
 
 // Register Controllers
@@ -52,6 +50,9 @@ app.use('/boards', boardController);
 
 const postController = require('./routes/postController')
 app.use('/boards/:boardId/posts', postController)
+
+const userController = require('./routes/userController')
+app.use('/users', userController)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -20,11 +20,15 @@ var Schema = require("./schema.js");
 
 var BoardModel = Schema.BoardModel;
 var PostModel = Schema.PostModel;
+var UserModel = Schema.UserModel;
 
 // Delete all boards from the database BoardModel.remove({}, function (err) {
     BoardModel.remove({}, function (err) {
         console.log(err);
     });
+    UserModel.remove({}, function(err){
+        console.log(err);
+    })
 
 // Create some boards and Posts
 const channel = new BoardModel({ name: 'Channel', description: "This is the main board channel" })
@@ -50,6 +54,33 @@ boards.forEach((board) => {
             console.log(error)
         })
 });
+//---------------------------------------
+const admin1 = new UserModel({name: 'admin',hash: 'AAAA'})
+const users = [admin1];
 
+users.forEach((user) => {
+        user.save()
+            .then((user) => {
+                console.log(`${user.name} saved!`)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    });
 // Disconnect from database
 db.close();
+
+
+
+// const UserSchema = new Schema({
+//     name: {
+//         type: String,
+//         required: true,
+//         unique: true
+//     },
+//     hash: {
+//         type: String,
+//         required: true,
+//         unique: true,
+//     }
+// })

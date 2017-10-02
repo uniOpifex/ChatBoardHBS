@@ -2,44 +2,44 @@ const express = require('express')
 const router = express.Router()
 
 const Schema = require("../db/schema.js");
-const BoardModel = Schema.BoardModel;
+const UserModel = Schema.UserModel;
 
 // INDEX route
 router.get('/', (request, response) => {
     
     // FIND all of the companies in the database
-    BoardModel.find({})
-        .then((boards => {
+    UserModel.find({})
+        .then((users => {
 
             // THEN once they come back from the database
             // RENDER them in Handlebars
-            response.render('boards/index', {
-                boards: boards
+            response.render('users/index', {
+                users: users
             })
         }))
-    })
-        // .catch((error) => {
+    
+         .catch((error) => {
         //     console.log(error)
-        // }))
-      
+        })
+      })  
 
 // NEW route
 router.get('/new', (request, response) => {
     // RENDER an empty form for the new company
-    response.render('boards/new')
+    response.render('users/new')
 })
 
 // CREATE route
 router.post('/', (request, response) => {
 
-    // GRAB the new board info as a JS object from the request body
-    const newBoard = request.body
+    // GRAB the new user info as a JS object from the request body
+    const newuser = request.body
 
     // CREATE and SAVE a new Company using the CompanyModel
-    BoardModel.create(newBoard)
+    UserModel.create(newuser)
         .then(() => {
-            // THEN once the model has saved, redirect to the boards INDEX
-            response.redirect('/boards')
+            // THEN once the model has saved, redirect to the users INDEX
+            response.redirect('/users')
         })
         .catch((error) => {
             console.log(error)
@@ -47,19 +47,19 @@ router.post('/', (request, response) => {
 })
 
 // EDIT route
-router.get('/:boardId/edit', (request, response) => {
+router.get('/:userId/edit', (request, response) => {
 
-    // GRAB the board ID from the parameters
-    const boardId = request.params.companyId
+    // GRAB the user ID from the parameters
+    const userId = request.params.companyId
 
-    // FIND the board by ID using the BoardModel
-    BoardModel.findById(boardId)
-        .then((board) => {
-            // THEN once the board has been returned from
+    // FIND the user by ID using the UserModel
+    UserModel.findById(userId)
+        .then((user) => {
+            // THEN once the user has been returned from
             // the database, RENDER a form containing the current
-            // board information
-            response.render('boards/edit', {
-                board: board
+            // user information
+            response.render('users/edit', {
+                user: user
             })
         })
         .catch((error) => {
@@ -68,22 +68,22 @@ router.get('/:boardId/edit', (request, response) => {
 })
 
 // UPDATE route
-router.put('/:boardId', (request, response) => {
+router.put('/:userId', (request, response) => {
 
     // GRAB the company ID from the parameters
-    const boardId = request.params.companyId
+    const userId = request.params.companyId
 
     // GRAB the updated Company info from the request body
-    const updatedCompany = request.body
+    const updatedUser = request.body
 
     // Use Mongoose to find the company by ID and update it with the 
     // new company info. Be sure to include the {new: true} option as your
     // third parameter
-    BoardModel.findByIdAndUpdate(boardId, updatedBoard, { new: true })
+    UserModel.findByIdAndUpdate(userId, updateduser, { new: true })
         .then(() => {
             // THEN once the new company info has been saved,
             // redirect to that company's SHOW page
-            response.redirect(`/boards/${boardId}`)
+            response.redirect(`/users/${userId}`)
         })
         .catch((error) => {
             console.log(error)
@@ -91,18 +91,18 @@ router.put('/:boardId', (request, response) => {
 })
 
 // SHOW route
-router.get('/:boardId', (request, response) => {
+router.get('/:userId', (request, response) => {
 
     // GRAB the company ID from the parameters
-    const boardId = request.params.boardId
+    const userId = request.params.userId
 
     // Use the CompanyModel to find the company by ID in the database
-    BoardModel.findById(boardId)
-        .then((board) => {
+    UserModel.findById(userId)
+        .then((user) => {
             // THEN once the company comes back from the database,
             // render the single company's info using Handlebars
-            response.render('boards/show', {
-                board: board
+            response.render('users/show', {
+                user: user
             })
         })
         .catch((error) => {
@@ -111,18 +111,18 @@ router.get('/:boardId', (request, response) => {
 })
 
 //DELETE route
-router.get('/:boardId/delete', (request, response) => {
+router.get('/:userId/delete', (request, response) => {
 
     // GRAB the company ID that you want to delete from the parameters
-    const boardId = request.params.boardId
+    const userId = request.params.userId
 
     // Use the CompanyModel to find and delete the company in the database
-    BoardModel.findByIdAndRemove(boardId)
+    UserModel.findByIdAndRemove(userId)
         .then(() => {
 
             // THEN once the company has been deleted from the database
             // redirect back to the companies INDEX
-            response.redirect('/boards')
+            response.redirect('/users')
         })
         .catch((error) => {
             console.log(error)

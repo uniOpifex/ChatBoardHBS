@@ -99,40 +99,40 @@ router.post('/', (request, response) => {
 //         })
 // })
 
-// // UPDATE route
-// router.put('/:snowboardId', (request, response) => {
+// UPDATE route
+router.put('/postId', (request, response) => {
 
-//     // GRAB the board ID from the parameters
-//     const boardId = request.params.boardId
+    // GRAB the board ID from the parameters
+    const boardId = request.params.boardId
 
-//     // GRAB the snowboard ID from the parameters
-//     const snowboardId = request.params.snowboardId
+    // GRAB the snowboard ID from the parameters
+    const postId = request.params.postId
 
-//     // GRAB the updated snowboard object from the request body
-//     const updatedSnowboard = request.body
+    // GRAB the updated snowboard object from the request body
+    const updatedPost = request.body
 
-//     // USE the BoardModel to find the board by ID
-//     BoardModel.findById(boardId)
-//         .then((board) => {
-//             // THEN once the board has been returned,
-//             // FIND the snowboard by ID from the board's snowboards
-//             const snowboard = board.snowboards.id(snowboardId)
+    // USE the BoardModel to find the board by ID
+    BoardModel.findById(boardId)
+        .then((board) => {
+            // THEN once the board has been returned,
+            // FIND the snowboard by ID from the board's snowboards
+            const boardId = board.post.id(postId)
 
-//             // MAP each attribute from the updated snowboard object to
-//             // the same attribute on the original snowboard
-//             snowboard.name = updatedSnowboard.name
-//             snowboard.price = updatedSnowboard.price
+            // MAP each attribute from the updated snowboard object to
+            // the same attribute on the original snowboard
+            post.content = updatedPost.content
+            snowboard.price = updatedSnowboard.price
 
-//             // SAVE the updated board and return the PROMISE
-//             return board.save()
-//         })
-//         .then(() => {
-//             // THEN once the board has saved, REDIRECT to the 
-//             // snowboard's SHOW page
-//             response.redirect(`/companies/${boardId}/snowboards/${snowboardId}`)
-//         })
+            // SAVE the updated board and return the PROMISE
+            return board.save()
+        })
+        .then(() => {
+            // THEN once the board has saved, REDIRECT to the 
+            // snowboard's SHOW page
+            response.redirect(`/boards/${boardId}/posts/`)
+        })
 
-// })
+})
 
 // // SHOW route
 // router.get('/:snowboardId', (request, response) => {
