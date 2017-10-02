@@ -6,41 +6,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose')
-const methodOverride = require('method-override')
+var mongoose = require('mongoose');
+var http = require('http');
+const methodOverride = require('method-override');
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-io.on('connection', function(){ /* … */ });
 
-io.on('connection', function (socket) {
-  console.log('a user connected');
-  socket.on('disconnect', function () {
-      console.log('user disconnected');
-  });
-  socket.on('chat', function (msg) {
-    socket.broadcast.emit('chat', msg);
-  });
-  mongo.connect(process.env.process.env.MONGODB_URI, function (err, db) {
-    var collection = db.collection('chat messages')
-    var stream = collection.find().sort({ _id : -1 }).limit(10).stream();
-    stream.on('data', function (chat) { socket.emit('chat', chat); });
-  });
-  socket.on('disconnect', function () {
-    console.log('user disconnected');
-});
 
-socket.on('chat', function (msg) {
-    mongo.connect(process.env.process.env.MONGODB_URI, function (err, db) {
-        var collection = db.collection('chat messages');
-        collection.insert({ content: msg }, function (err, o) {
-            if (err) { console.warn(err.message); }
-            else { console.log("chat message inserted into db: " + msg); }
-        });
-    });
 
-    socket.broadcast.emit('chat', msg);
-});
-})
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -97,6 +71,29 @@ app.use('/boards', boardController);
 const postController = require('./routes/postController')
 app.use('/boards/:boardId/posts', postController)
 
+const sboardController = require('./routes/sboardController')
+app.use('/sboard/',sboardController)
+
+const AuthenticationController = require('./controllers/authentication'),  
+UserController = require('./controllers/user'),
+ChatController = require('./controllers/chat'),
+passportService = require('./node_modulea/passport'),
+passport = require('passport');
+
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
+const apiRoutes = express.Router(),
+authRoutes = express.Router(),
+chatRoutes = express.Router();
+router = require('./router'),
+router(app);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

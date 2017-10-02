@@ -25,6 +25,9 @@ const BoardSchema = new Schema({
 })
 
 
+ 
+
+
 
 const BoardModel = mongoose.model('Board', BoardSchema)
 const PostModel = mongoose.model('Post', PostSchema)
@@ -32,5 +35,5 @@ const PostModel = mongoose.model('Post', PostSchema)
 
 module.exports = {
     BoardModel: BoardModel,
-    PostModel: PostModel 
+    PostModel: PostModel
 }
