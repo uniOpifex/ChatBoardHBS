@@ -1,24 +1,17 @@
-<form action="/boards" method="POST">
-    <label for="name">Name</label>
-    <input type="text" name="name">
 
-    <label for="description">description</label>
-    <input type="text" name="description">
+<div class="container">
+     <h2>Creating a new Board</h2>
+    <div class="jumbotron">
+       
+        <form action="/boards" method="POST">
+            <label for="name">Name</label>
+            <input type="text" name="name">
+            <br>
+            <label for="description">Description</label>
+            <input type="text" name="description" id ="board-desc-input">
+            <br>
+            <span class="text-center"><input class="btn btn-primary " type="submit" value="Create"></span>
+        </form>
+    </div>
+</div>
 
-    <input type="submit" value="Create">
-</form>
-
-
-
-{{!-- const BoardSchema = new Schema({
-    name: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    description: {
-        type: String
-    },
-    date: { type: Date, default: Date.now },
-    posts: [PostSchema]
-}) --}}

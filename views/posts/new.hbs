@@ -1,7 +1,14 @@
-<form action="/boards/{{boardId}}/posts" method="POST">
-    <label for="content">Content</label>
-    <input type="text" name="content">
-    <label for="hash">User Hash</label>
-    <input type="text" name="hash">
-    <input type="submit" value="Create">
-</form>
+<div class="containter">
+    <h2>New Post</h2>
+    <form action="/boards/{{boardId}}/posts" method="POST">
+        <h3 for="content">Content</h3>
+        <textarea type="text" name="content" id="new-post-content"></textarea>
+        <br>
+        <br>
+        <label for="hash">User Hash</label>
+        <input type="text" name="hash">
+        <br>
+        <br>
+        <input class ="btn"type="submit" value="Create">
+    </form>
+</div>

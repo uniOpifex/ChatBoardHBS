@@ -6,3 +6,17 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+#board-desc-input{
+  width: 75%;
+  height: 100%;
+}
+#new-post-content {
+  width: 75%;
+  height: 200px;
+}
+
+ul {
+  list-style-type: none;
+}

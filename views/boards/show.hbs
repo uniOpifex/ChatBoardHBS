@@ -1,18 +1,22 @@
-<div>
+<div class="container">
     <h1>{{board.name}}</h1>
-    <div>Description: {{board.description}}</div>
-    <div>Date-created: {{board.date}}</div>
-    <div>
-        Number of Posts {{board.posts.length}}
-    </div>
-    <div>
-        <a href="/boards/{{board._id}}/posts">Back to posts</a>
-    </div>
-    <div>
-        <a href="/boards{{board._id}}/edit">Edit</a>
-    </div>
-    <div>
-        <a href="/boards/{{board._id}}/delete">Delete</a>
+    <div class="jumbotron">
+        <div>Description: {{board.description}}</div>
+        <div>Date-created: {{board.date}}</div>
+        <div>
+            Number of Posts {{board.posts.length}}
+        </div>
+        <div>
+            <a href="/boards/{{board._id}}/posts">Back to posts</a>
+        </div>
+        <div>
+            <a href="/boards{{board._id}}/edit">Edit</a>
+        </div>
+        <br>
+        <br>
+        <div>
+            <a href="/boards/{{board._id}}/delete"><button class="btn btn-danger">Delete</button></a>
+        </div>
     </div>
 
 </div>

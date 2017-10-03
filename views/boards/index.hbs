@@ -1,20 +1,24 @@
-<div>
-    <h1>The General Channel</h1>
+<div class="container">
+    <h1>Message Board Generator</h1>
 
-    <h3>Boards:</h3>
-    <div>
-        <a href="/board/new">Add New Board</a>
-    </div> 
-    {{#each boards}}
+    <div class="jumbotron">
+        <h3>Boards:</h3>
+        <div>
+            <a href="/boards/new">Add New Board</a>
+        </div>
+        <br>
+        {{#each boards}}
         <div>
             {{this.name}} - {{this.description}}
             <a href="/boards/{{this._id}}/posts">{{this.name}}'s posts</a>
         </div>
-    {{/each}}
-
-     <div>
-        <a href="/boards/new">Add New Board</a>
+        {{/each}}
+        <br>
+        <div>
+            <a href="/boards/new">Add New Board</a>
+        </div>
     </div>
+
+    <a href="/users/">Users</a>
+
 </div>
-
-

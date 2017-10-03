@@ -1,12 +1,15 @@
-<div>
-    <h1>Users</h1>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Users</h1>
 
-    <div>
-        <a href="/user/new">Add New users</a>
-    </div> 
-    {{#each users}}
+        <div>
+            <a href="/users/new">Add New users</a>
+        </div>
+        <br>
+        {{#each users}}
         <div>
             {{this.name}}
         </div>
-    {{/each}}
+        {{/each}}
+    </div>
 </div>
