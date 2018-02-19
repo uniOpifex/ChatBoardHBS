@@ -1,17 +1,19 @@
-<div class="containter">
-    <h2>New Post</h2>
-    <form action="/boards/{{boardId}}/posts" method="POST">
-        <h3 for="content">Content</h3>
-        <textarea type="text" name="content" id="new-post-content"></textarea>
+<div class="container">
+    <div class="col s12">
+        <h2>New Post</h2>
+        <form action="/boards/{{boardId}}/posts" method="POST">
+            <h3 for="content">Content</h3>
+            <textarea type="text" name="content" id="new-post-content"></textarea>
+            <br>
+            <br>
+            <label for="hash">User Hash</label>
+            <input type="text" name="hash">
+            <br>
+            <br>
+            <input class="btn" type="submit" value="Create">
+        </form>
         <br>
-        <br>
-        <label for="hash">User Hash</label>
-        <input type="text" name="hash">
-        <br>
-        <br>
-        <input class ="btn"type="submit" value="Create">
-    </form>
-    <br>
-    <p>Need to create a user?</p>
-    <a href="/users/">Create New User</a>
+        <p>Need to create a user?</p>
+        <a href="/users/">Create New User</a>
+    </div>
 </div>

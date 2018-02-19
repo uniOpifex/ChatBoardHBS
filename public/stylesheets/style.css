@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -9,12 +8,10 @@ a {
 
 
 #board-desc-input{
-  width: 75%;
-  height: 100%;
+ 
 }
 #new-post-content {
-  width: 75%;
-  height: 200px;
+  
 }
 
 ul {

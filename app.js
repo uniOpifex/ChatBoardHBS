@@ -10,12 +10,13 @@ var mongoose = require('mongoose')
 
 const methodOverride = require('method-override')
 
-
 var index = require('./routes/index');
 
+var app = express();
+
 // Database Set-up
-mongoose.Promise = global.Promise
-mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true});
+//mongoose.Promise = global.Promise
+mongoose.connect(process.env.MONGODB_URI);
 
 const db = mongoose.connection
 db.on('error', (error) => {
@@ -25,7 +26,6 @@ db.once('open', () => {
   console.log('Connected to MongoDB!')
 })
 
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -11,7 +11,7 @@ db.on('error', function (err) {
     console.log(err);
 });
 // Will log "database has been connected" if it successfully connects.
-db.once('open', function () {
+db.on('open', function () {
     console.log("Connected to MongoDB!");
 });
 
@@ -23,12 +23,12 @@ var PostModel = Schema.PostModel;
 var UserModel = Schema.UserModel;
 
 // Delete all boards from the database BoardModel.remove({}, function (err) {
-    BoardModel.remove({}, function (err) {
-        console.log(err);
-    });
-    UserModel.remove({}, function(err){
-        console.log(err);
-    })
+    // BoardModel.remove({}, function (err) {
+    //     console.log(err);
+    // });
+    // UserModel.remove({}, function(err){
+    //     console.log(err);
+    // })
 
 // Create some boards and Posts
 const channel = new BoardModel({ name: 'Channel', description: "This is the main board channel" })

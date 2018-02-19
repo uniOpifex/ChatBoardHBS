@@ -24,6 +24,11 @@ const BoardSchema = new Schema({
         required: true,
         unique: true
     },
+    user: {
+        type: String,
+        required: true,
+        default: "Xx_anonymous_xX"
+    },
     description: {
         type: String
     },

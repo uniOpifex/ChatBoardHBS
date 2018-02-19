@@ -1,28 +1,35 @@
+<nav>
+	<div class="nav-wrapper">
+		<div class="col s12">
+			<a href="#!" class="breadcrumb">Boards</a>
+			<a href="#!" class="breadcrumb">{{board.name}}</a>
+			<a href="#!" class="breadcrumb">Posts</a>
+		</div>
+	</div>
+</nav>
 <div class="container">
-    <h1>{{board.name}}</h1>
-    <h2>{{board.description}}</h2>
-    <div>
-    <span>    <a href="/boards/{{board._id}}">{{board.name}} Info</a>
-    <a href="/boards">Back to Boards</a>
-    </div>
-    <div class="jumbotron">
-    
-    {{#each board.posts}}
-        {{!-- <div> --}}
-            <ul>
-                <li>{{this.content}}</li>
-                <li>{{this.user}} <span class"text-right"> {{this.date}}</span></li>
-            </ul>
-            <hr> 
-            {{!-- <button
-            action="/board/{{board._id}}/posts/{{post._id}}?_method=PUT" method="POST" >
-            <input type="submit" value="Hide"></button>
-        </div> --}}
-    {{/each}}
-    </div>
-     <div>
-        <a href="/boards/{{board._id}}/posts/new">Create a New Post</a>
-    </div>
-</form>
-    
+	<h1>{{board.name}}</h1>
+	<h2>{{board.description}}</h2>
+	<div>
+		<span>
+			<a href="/boards/{{board._id}}">{{board.name}} Info</a>
+	</div>
+	<div class="">
+
+		{{#each board.posts}} {{!--
+		<div> --}}
+			<ul class="collection">
+				<li class="collection-item">{{this.content}}</li>
+				<li class="collection-item">{{this.user}}
+					<span class "text-right"> {{this.date}}</span>
+				</li>
+			</ul>
+			<hr> 
+			{{/each}}
+	</div>
+	<div>
+		<a href="/boards/{{board._id}}/posts/new">Create a New Post</a>
+	</div>
+	</form>
+
 </div>
