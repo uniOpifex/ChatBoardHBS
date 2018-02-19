@@ -1,9 +1,30 @@
+
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 a {
   color: #00B7FF;
+}
+
+.navbar {
+flex: 0;
+}
+
+.content{
+flex: 1
+}
+
+.footer{
+
 }
 
 
@@ -17,3 +38,4 @@ a {
 ul {
   list-style-type: none;
 }
+

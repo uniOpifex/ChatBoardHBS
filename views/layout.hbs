@@ -5,28 +5,63 @@
   <title>{{title}}</title>
   <link rel='stylesheet' href='/css/materialize.min.css'>
   <link rel='stylesheet' href='/stylesheets/style.css' />
-  
+
 
 </head>
 
 <body>
-  <nav class="" role="navigation">
-      
-       <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo right">Message Board Generator</a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="/">Home</a></li>
-        <li><a href="/users">Create User</a></li>
-        <li><a href="/about">About</a></li>
-      </ul>
+  <nav class="navbar" role="navigation">
+
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Message Board Generator</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li>
+            <a href="/Boards">Boards</a>
+          </li>
+          <li>
+            <a href="/users">Create User</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+
+        </ul>
+
+
+
+      </div>
+    </nav> s
+  </nav>
+
+  <div class="content">
+    {{{body}}}
+  </div>
+
+  <footer class="page-footer footer">
+
+    <div class="footer-copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <form action="">
+               <div class="col s8">
+                  © 2014 Copyright Text Made with MaterializeCss
+              </div>
+              <div class="input-field col s2">
+                <input placeholder="Hash Key" id="Hash" type="text" class="validate">
+              </div>
+              <div class="input-field col s2">
+                <input class="btn" type="submit" value="Save">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-  </nav> s
-    </nav>
+  </footer>
 
-  {{{body}}}
 
-  
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -61,7 +61,7 @@ router.post('/', (request, response) => {
 router.get('/:boardId/edit', (request, response) => {
 
     // GRAB the board ID from the parameters
-    const boardId = request.params.companyId
+    const boardId = request.params.boardId
 
     // FIND the board by ID using the BoardModel
     BoardModel.findById(boardId)
@@ -80,12 +80,8 @@ router.get('/:boardId/edit', (request, response) => {
 
 // UPDATE route
 router.put('/:boardId', (request, response) => {
-
-    // GRAB the company ID from the parameters
-    const boardId = request.params.companyId
-
-    // GRAB the updated Company info from the request body
-    const updatedCompany = request.body
+    const boardId = request.params.boardId
+    const updatedBoard = request.body
 
     // Use Mongoose to find the company by ID and update it with the 
     // new company info. Be sure to include the {new: true} option as your
@@ -124,15 +120,10 @@ router.get('/:boardId', (request, response) => {
 //DELETE route
 router.get('/:boardId/delete', (request, response) => {
 
-    // GRAB the company ID that you want to delete from the parameters
     const boardId = request.params.boardId
 
-    // Use the CompanyModel to find and delete the company in the database
     BoardModel.findByIdAndRemove(boardId)
         .then(() => {
-
-            // THEN once the company has been deleted from the database
-            // redirect back to the companies INDEX
             response.redirect('/boards')
         })
         .catch((error) => {
