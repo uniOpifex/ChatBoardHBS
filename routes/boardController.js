@@ -3,6 +3,7 @@ const router = express.Router()
 
 const Schema = require("../db/schema.js");
 const BoardModel = Schema.BoardModel;
+const UserModel = Schema.UserModel;
 
 // INDEX route
 router.get('/', (request, response) => {
@@ -33,13 +34,23 @@ router.get('/new', (request, response) => {
 router.post('/', (request, response) => {
 
     // GRAB the new board info as a JS object from the request body
-    const newBoard = request.body
+    const body= request.body;
+    console.log(body);
+    var newBoard = {};
+    newBoard.name = body.name;
+    newBoard.description = body.description
 
     // CREATE and SAVE a new Company using the CompanyModel
-    BoardModel.create(newBoard)
-        .then(() => {
-            // THEN once the model has saved, redirect to the boards INDEX
-            response.redirect('/boards')
+    UserModel.find({hash: body.hash})
+        .then((user) => {
+            newBoard.user = user[0].name
+            
+        })
+        .then((board) => {      
+            BoardModel.create(newBoard)
+        })
+        .then((board) => {
+            response.redirect(`/boards/`)
         })
         .catch((error) => {
             console.log(error)

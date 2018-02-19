@@ -20,9 +20,6 @@ router.get('/', (request, response) => {
             response.render('posts/index', {
                 board: board
             })
-            request.send('posts/new', {
-                boardId: boardId
-            })
         })
         .catch((error) => {
             console.log(error)
@@ -58,29 +55,15 @@ router.post('/', (request, response) => {
     // console.log('test 2' + newPost)
     UserModel.find({hash: body.hash})
         .then((user) => {
-                    // THEN once the user comes back from the database,
-                    // render the single company's info using Handlebars
-            // console.log("newPost")
-            // console.log(newPost)
-            // console.log(user)
-            console.log(user)
-            console.log(user[0].name)
             newPost.user = user[0].name
             console.log(newPost)
-            // console.log(newPost)
-            // console.log("user");
-            // console.log(user)
         })
         .then((user) => {
             return BoardModel.findById(boardId)
         })
         .then((board) => {
             
-            // THEN once you have found the board from the database
-            // PUSH the new snowboard object into the board's 
-            // snowboard array 
-            // console.log("newPost")  
-            // console.log(newPost)         
+            
             board.posts.push(newPost)
 
             // SAVE the board and return the PROMISE
