@@ -7,11 +7,9 @@ const UserModel = Schema.UserModel;
 
 // INDEX route
 router.get('/', (request, response) => {
-    
-    // FIND all of the companies in the database
+    // FIND all of the Boards in the database
     BoardModel.find({})
         .then((boards => {
-
             // THEN once they come back from the database
             // RENDER them in Handlebars
             response.render('boards/index', {

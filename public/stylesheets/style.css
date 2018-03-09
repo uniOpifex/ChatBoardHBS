@@ -1,5 +1,3 @@
-
-
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   display: flex;
@@ -15,27 +13,31 @@ a {
   color: #00B7FF;
 }
 
+.boardList {
+
+}
+.stripedList li:nth-child(even) {
+  background: #CCC
+}
+
+.stripedList li:nth-child(odd) {
+  background: #FFF
+}
+
 .navbar {
-flex: 0;
+  flex: 0;
 }
 
-.content{
-flex: 1
+.content {
+  flex: 1
 }
 
-.footer{
+.footer {}
 
-}
+#board-desc-input {}
 
-
-#board-desc-input{
- 
-}
-#new-post-content {
-  
-}
+#new-post-content {}
 
 ul {
   list-style-type: none;
 }
-

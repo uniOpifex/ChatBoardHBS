@@ -5,6 +5,10 @@
   <title>{{title}}</title>
   <link rel='stylesheet' href='/css/materialize.min.css'>
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
 
 
 </head>
@@ -49,10 +53,10 @@
                   © 2014 Copyright Text Made with MaterializeCss
               </div>
               <div class="input-field col s2">
-                <input placeholder="Hash Key" id="Hash" type="text" class="validate">
+                <input value="" id="IDHash" type="text" class="validate">
               </div>
               <div class="input-field col s2">
-                <input class="btn" type="submit" value="Save">
+                <input class="btn" onclick="saveHash()" value="Save">
               </div>
             </form>
           </div>
@@ -60,7 +64,6 @@
       </div>
     </div>
   </footer>
-
 
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

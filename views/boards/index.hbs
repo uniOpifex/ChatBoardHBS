@@ -1,33 +1,35 @@
 <div class="container">
-    <h1>Message Board Generator</h1>
 
-    <div class="col s12">
-        <h3>Boards:</h3>
-        <div>
-            <a href="/boards/new">Add New Board</a>
-        </div>
-        <br> {{#each boards}}
-        <div class="row">
-            <div class="row">
-                <div class="col s3">Title: {{this.name}}</div>
-                <div class="col s3">{{this.description}}</div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col s6">
-                    <a href="/boards/{{this._id}}/posts">{{this.name}}'s posts</a>
-                </div>
+	<div class="col s12 boardlist">
+		<h3>Boards:</h3>
+		<div>
+			<a href="/boards/new">Add New Board</a>
+		</div>
+		<div>
+			<ul class="collection stripedList">
+				{{#each boards}}
+				<li class="collection-item" href="/boards/{{this._id}}/">
+					<span class="title">Board Title: {{this.name}}</span>
+					<p>{{this.user}}
+						<br> 
+						{{niceDate this.date}}
+					</p>
+					<a href="/boards/{{this._id}}/" class="btn btn-floating pulse">
+						<i class="fas fa-arrow-right"></i>
+					</a>
+				</li>
+				{{/each}}
+				<li class="colllection-item">
+					<a href="/boards/new">Add New Board</a>
+					<p>Need to create a user</p>
+					<a href="/users/">Users</a>
+				</li>
+			</ul>
+		</div>
+		<br>
 
-            </div>
-        </div>
-        {{/each}}
-        <br>
-        <div>
-            <a href="/boards/new">Add New Board</a>
-        </div>
-    </div>
+	</div>
 
-    <p>Need to create a user</p>
-    <a href="/users/">Users</a>
+
 
 </div>
