@@ -1,27 +1,36 @@
-
 <div class="container">
-	<h1>{{board.name}}</h1>
-	<h2>{{board.description}}</h2>
-	<div>
-		<span>
-			<a href="/boards/{{board._id}}">{{board.name}} Info</a>
+	<div class="col s12 boardlist">
+		<h2>{{board.name}}</h2>
+		<p>{{board.description}}</p>
+		<a href="/boards/{{board._id}}">{{board.name}} Info</a>
+		<a href="/boards/{{board._id}}/posts/new">new post</a>
 	</div>
-	<div class="">
-
-		{{#each board.posts}} {{!--
-		<div> --}}
-			<ul class="collection">
-				<li class="collection-item">{{this.content}}</li>
-				<li class="collection-item">{{this.user}}
-					<span class "text-right"> {{this.date}}</span>
-				</li>
-			</ul>
-			<hr> 
+	<div>
+		<ul class="collection stripedList">
+			{{#each board.posts}}
+			<li class="collection-item row">
+				<div class="row">
+					<div class="col s12">
+						<p>{{this.content}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12">
+						<span class="left">{{this.user}}</span>
+						<span class="right">{{niceDate this.date}}</span>
+					</div>
+				</div>
+			</li>
 			{{/each}}
+		</ul>
+		<div class="col s12 content-footer">
+			<div class="row">
+				<div class="col s12">
+					<a class="btn" href="/boards/{{board._id}}/posts/new">Add New Post?</a>
+					<a class="btn" href="/users/">Need to create a user?</a>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div>
-		<a href="/boards/{{board._id}}/posts/new">Create a New Post</a>
-	</div>
-	</form>
 
 </div>

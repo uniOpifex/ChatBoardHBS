@@ -10,30 +10,34 @@
 				{{#each boards}}
 				<li class="collection-item row" href="/boards/{{this._id}}/">
 					<div class="col s11">
-						<span class="title"><h3>{{this.name}}</h3></span>
-							<span class="description"><p>{{this.description}}</p></span>
-					<p>created by {{this.user}}
-						<br> 
-						On: {{niceDate this.date}}
-					</p>
+						<span class="title">
+							<h3>{{this.name}}</h3>
+						</span>
+						<span class="description">
+							<p>{{this.description}}</p>
+						</span>
+						<p>created by {{this.user}}
+							<br> On: {{niceDate this.date}}
+							<br> number of post: {{this.posts.length}}
+						</p>
 					</div>
 					<div class="col s1">
 						<a href="/boards/{{this._id}}/posts" class="btn valign-wrapper">
-						<i class="fas fa-arrow-right"></i>
-					</a>
+							<i class="fas fa-arrow-right"></i>
+						</a>
 					</div>
 				</li>
 				{{/each}}
 			</ul>
 			<div class="col s12 content-footer">
-					<div class="row">
-						<div class="col s12">
-							<button class="btn "href="/boards/new">Add New Board</button>
-							<button class="btn" href="/users/">Need to create a user?</button>
-						</div>
-						</div>
+				<div class="row">
+					<div class="col s12">
+						<button class="btn " href="/boards/new">Add New Board</button>
+						<button class="btn" href="/users/">Need to create a user?</button>
 					</div>
-					
+				</div>
+			</div>
+
 		</div>
 		<br>
 
