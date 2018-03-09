@@ -5,26 +5,35 @@
 		<div>
 			<a href="/boards/new">Add New Board</a>
 		</div>
-		<div>
+		<div class="boardList">
 			<ul class="collection stripedList">
 				{{#each boards}}
-				<li class="collection-item" href="/boards/{{this._id}}/">
-					<span class="title">Board Title: {{this.name}}</span>
-					<p>{{this.user}}
+				<li class="collection-item row" href="/boards/{{this._id}}/">
+					<div class="col s11">
+						<span class="title"><h3>{{this.name}}</h3></span>
+							<span class="description"><p>{{this.description}}</p></span>
+					<p>created by {{this.user}}
 						<br> 
-						{{niceDate this.date}}
+						On: {{niceDate this.date}}
 					</p>
-					<a href="/boards/{{this._id}}/" class="btn btn-floating pulse">
+					</div>
+					<div class="col s1">
+						<a href="/boards/{{this._id}}/posts" class="btn valign-wrapper">
 						<i class="fas fa-arrow-right"></i>
 					</a>
+					</div>
 				</li>
 				{{/each}}
-				<li class="colllection-item">
-					<a href="/boards/new">Add New Board</a>
-					<p>Need to create a user</p>
-					<a href="/users/">Users</a>
-				</li>
 			</ul>
+			<div class="col s12 content-footer">
+					<div class="row">
+						<div class="col s12">
+							<button class="btn "href="/boards/new">Add New Board</button>
+							<button class="btn" href="/users/">Need to create a user?</button>
+						</div>
+						</div>
+					</div>
+					
 		</div>
 		<br>
 

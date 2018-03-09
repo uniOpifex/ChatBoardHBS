@@ -16,12 +16,28 @@ a {
 .boardList {
 
 }
+
+.content-footer {
+  background-color: #ee6e73;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.content-footer .row{
+  margin-bottom: 0px;
+}
 .stripedList li:nth-child(even) {
   background: #CCC
 }
 
 .stripedList li:nth-child(odd) {
   background: #FFF
+}
+
+.stripedList {
+  margin-bottom: 0px;
 }
 
 .navbar {
