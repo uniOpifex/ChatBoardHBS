@@ -36,9 +36,21 @@ router.get('/new', (request, response) => {
     // RENDER a new form for a fresh Snowboard,
     // also passing the boardId to use in the
     // form's ACTION
-    response.render('posts/new', {
-        boardId: boardId
-    })
+
+    BoardModel.findById(boardId)
+        .then((board) => {
+            // THEN once you have found the board in the database
+            // RENDER the board and its EMBEDDED snowboard info 
+            // using Handlebars
+            response.render('posts/new', {
+                board: board,
+                boardId: boardId
+            })
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+   
 })
 
 // CREATE route
