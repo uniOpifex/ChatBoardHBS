@@ -78,14 +78,14 @@ router.get('/:boardId/edit', (request, response) => {
 
 // UPDATE route
 router.put('/:boardId/', (request, response) => {
-    console.log(request.body)
-    const boardId = request.params.boardId
-    const updatedBoard = request.body
+    console.log(request.body);
+    const boardId = request.params.boardId;
+    const updatedBoard = request.body;
     // Use Mongoose to find the company by ID and update it with the 
     // new company info. Be sure to include the {new: true} option as your
     // third parameter
     BoardModel.findByIdAndUpdate(boardId, updatedBoard, { new: true })
-        .then((boardId) => {
+        .then(() => {
             console.log("WE ARE HERE")
             // THEN once the new company info has been saved,
             // redirect to that company's SHOW page

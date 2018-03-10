@@ -2,7 +2,7 @@
     <h2>Editing {{board.name}}</h2>
     <div class="COL s12">
 
-        <form action="/boards/{{board._id}}/" method="POST" class="col s23">
+        <form action="/boards/{{board._id}}?_method=PUT" method="POST" class="col s23">
             <label for="name">Name</label>
             <input type="text" name="name" value="{{board.name}}">
             <br>

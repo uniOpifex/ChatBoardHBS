@@ -1,0 +1,13 @@
+router.put('/:jumperId', (request, response) => {
+    
+  const jumperId = request.params.jumperId
+
+  const updatedJumper = request.body
+  JumperModel.findByIdAndUpdate(jumperId, updatedJumper, { new: true })
+  .then(() => {
+      response.redirect(`/jumpers/${jumperId}`)
+  })
+  .catch((error) => {
+      console.log(error)
+  })
+})
