@@ -1,9 +1,15 @@
 // jQuery on load
-$( () => {
-    $('.tap-target').tapTarget('open');
-    $('.tap-target').tapTarget('close');
+$("#menu").click(function(){
+    clickEvent();
+});
+
+function clickEvent() {
+  var clicked = $('#menu').attr('clicked'); 
+  if (clicked ==="true"){$('#menu').attr('clicked', 'false')
+                        $('.tap-target').tapTarget('open');} else {$('#menu').attr('clicked', 'true')
+                                                                  $('.tap-target').tapTarget('close');}
+  console.log($('#menu').attr('clicked'))
 }
-);
 
 function makeid() {
     var text = "";
