@@ -1,9 +1,13 @@
 <div class="container">
 	<div class="col s12 boardlist">
 		<h2>{{board.name}}</h2>
-		<p>{{board.description}}</p>
-		<a href="/boards/{{board._id}}">{{board.name}} Info</a>
-		<a href="/boards/{{board._id}}/posts/new">new post</a>
+		<h4>{{board.description}}</h4 >
+		
+		
+		<div class="col s12 content-header">
+			<a class="btn" href="/boards/{{board._id}}">{{board.name}} Info</a>
+				<a class="btn" href="/boards/{{board._id}}/posts/new">new post</a>
+		</div>
 	</div>
 	<div>
 		<ul class="collection stripedList">

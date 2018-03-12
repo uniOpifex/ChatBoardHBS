@@ -1,4 +1,9 @@
-
+// jQuery on load
+$( () => {
+    $('.tap-target').tapTarget('open');
+    $('.tap-target').tapTarget('close');
+}
+);
 
 function makeid() {
     var text = "";
